@@ -1,20 +1,12 @@
 {
-<<<<<<< HEAD
   "name": "my-app",
-=======
-  "name": "frontend",
->>>>>>> 6c2a4d3b773dcf9e8dc59aa56b570a6f91de8708
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-<<<<<<< HEAD
     "lint": "eslint"
-=======
-    "test": "vitest"
->>>>>>> 6c2a4d3b773dcf9e8dc59aa56b570a6f91de8708
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -30,7 +22,6 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-<<<<<<< HEAD
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -38,18 +29,5 @@
     "eslint-config-next": "16.2.3",
     "tailwindcss": "^4",
     "typescript": "^5"
-=======
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/react": "^16.3.2",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@vitejs/plugin-react": "^6.0.1",
-    "jsdom": "^29.0.2",
-    "tailwindcss": "^4",
-    "typescript": "^5",
-    "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.4"
->>>>>>> 6c2a4d3b773dcf9e8dc59aa56b570a6f91de8708
   }
 }
