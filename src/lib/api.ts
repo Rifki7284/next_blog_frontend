@@ -1,16 +1,17 @@
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 export async function fetchAPI(
   path: string,
   options?: RequestInit & {
     next?: { revalidate?: number };
   },
 ) {
-  const res = await fetch(`http://localhost:1337/api${path}`, {
+  const res = await fetch(`${BASE_URL}api/${path}`, {
     cache: "force-cache", // ✅ SSG default
     ...options,
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch API");
+    console.log(res);
   }
 
   return res.json();

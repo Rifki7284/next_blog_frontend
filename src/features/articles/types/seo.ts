@@ -8,7 +8,9 @@ export interface Seo {
   canonicalURL?: string;
   ogTitle?: string;
   ogDescription?: string;
-  ogImage?: Media;
+  ogImage?: {
+    url: string;
+  };
   twitterTitle?: string;
   twitterDescription?: string;
   twitterImage?: Media;

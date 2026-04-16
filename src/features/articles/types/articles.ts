@@ -1,8 +1,9 @@
-import { Author } from "next/dist/lib/metadata/types/metadata-types";
 import { Media } from "./media";
 import { Category } from "./category";
 import { Seo } from "./seo";
 import { Block } from "./bloks";
+import { Meta } from "./articles-response";
+import { Author } from "./author";
 
 export interface Article {
   id: string;
@@ -12,6 +13,7 @@ export interface Article {
   cover: Media;
   author: Author;
   category: Category;
+  publishedAt: Date;
   seo: Seo;
   blocks: Block[];
 }
