@@ -8,11 +8,8 @@ import {
   getArticles,
 } from "@/features/articles/services/blogServices";
 import { ArticlesResponse } from "@/features/articles/types/articles-response";
-import { calculateReadTime } from "@/features/articles/utils/calculateReadtime";
 import { formatDate } from "@/features/articles/utils/formatDate";
 import { Metadata, ResolvingMetadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 type Props = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -62,6 +59,7 @@ export async function generateMetadata(
     },
   };
 }
+export const revalidate = 60;
 export async function generateStaticParams() {
   const posts: ArticlesResponse = await getArticles();
   return posts?.data.map((post) => ({
