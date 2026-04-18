@@ -10,10 +10,11 @@ export interface Article {
   title: string;
   description: string;
   slug: string;
-  cover: Media;
+  cover: {
+    url: string;
+  };
   author: Author;
   category: Category;
   publishedAt: Date;
-  seo: Seo;
   blocks: Block[];
 }

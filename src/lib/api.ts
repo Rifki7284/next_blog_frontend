@@ -5,8 +5,8 @@ export async function fetchAPI(
     next?: { revalidate?: number };
   },
 ) {
-  const res = await fetch(`${BASE_URL}api/${path}`, {
-    cache: "force-cache", // ✅ SSG default
+  const res = await fetch(`${BASE_URL}/api/${path}`, {
+    cache: "force-cache",
     ...options,
   });
 

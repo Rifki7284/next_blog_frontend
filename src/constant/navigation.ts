@@ -8,7 +8,7 @@ export const MAIN_NAV_LINKS: NavigationLink[] = [
   },
   {
     label: "Articles",
-    href: "/articles",
+    href: "/article",
     description: "Browse all articles",
   },
   {
