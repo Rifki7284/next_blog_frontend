@@ -2,10 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    qualities: [75, 100],
     remotePatterns: [
       {
         protocol: "http",
-        hostname: "localhost",
+        hostname: "192.168.0.6",
         port: "1337",
         pathname: "/uploads/**",
         search: "",

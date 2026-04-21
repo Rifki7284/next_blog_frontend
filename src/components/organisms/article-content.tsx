@@ -15,7 +15,7 @@ const ArticleContent = ({ article, publishedDate }: ArticleContentProps) => {
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back Link */}
         <Link
-          href="/articles"
+          href="/article"
           className="text-primary hover:underline text-sm mb-8 inline-block"
         >
           ← Back to Articles

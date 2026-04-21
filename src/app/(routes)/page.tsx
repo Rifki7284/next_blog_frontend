@@ -1,6 +1,6 @@
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/organisms/footer";
 import MainContent from "@/components/organisms/main-content";
+import { Navbar } from "@/components/organisms/navbar";
 import { Metadata } from "next";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL!;
 export async function generateMetadata(): Promise<Metadata> {

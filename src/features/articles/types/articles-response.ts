@@ -10,5 +10,9 @@ export interface Meta {
 }
 export interface ArticlesResponse {
   data: Article[];
-  meta?: Meta;
+  meta: Meta;
+}
+
+export interface ArticleListProps {
+  data: Article[];
 }

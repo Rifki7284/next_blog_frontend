@@ -6,7 +6,6 @@ export async function fetchAPI(
   },
 ) {
   const res = await fetch(`${BASE_URL}/api/${path}`, {
-    cache: "force-cache",
     ...options,
   });
 

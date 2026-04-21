@@ -26,10 +26,11 @@ export function ArticleCard({
             <div className="w-full h-48 sm:h-56 overflow-hidden bg-muted">
               <Image
                 src={`${BASE_URL}${cover.url}`}
+                unoptimized
                 alt={title}
                 width={100}
                 height={100}
-                loading="lazy"
+                loading="eager"
                 quality={100}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />

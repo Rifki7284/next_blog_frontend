@@ -1,22 +1,17 @@
-import ArticleHeader from "@/components/molecules/article-header";
-import AuthorInfo from "@/components/molecules/author-info";
-import { ArticleCard } from "@/components/organisms/article-card";
-import ArticleContent from "@/components/organisms/article-content";
 import ArticleList from "@/components/organisms/article-list";
 import { Footer } from "@/components/organisms/footer";
 import { Navbar } from "@/components/organisms/navbar";
 import {
-  getArticleBySlug,
-  getArticles,
-} from "@/features/articles/services/blogServices";
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { getArticles } from "@/features/articles/services/blogServices";
 import { ArticlesResponse } from "@/features/articles/types/articles-response";
-import { formatDate } from "@/features/articles/utils/formatDate";
-import { Metadata, ResolvingMetadata } from "next";
-type Props = {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+import { Metadata } from "next";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${APP_URL}article`;
@@ -68,32 +63,57 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
-export const revalidate = 60;
-export async function generateStaticParams() {
-  const posts: ArticlesResponse = await getArticles();
-  return posts?.data.map((post) => ({
-    id: String(post.id),
-    slug: String(post.slug),
-  }));
-}
+export const revalidate = 300;
 
-export default async function Page() {
-  const posts: ArticlesResponse = await getArticles();
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: { page?: string };
+}) {
+  const params = await searchParams;
+  const page = Number(params?.page || 1);
+
+  const posts: ArticlesResponse = await getArticles(page);
   const article = posts.data;
+
+  const pagination = posts.meta.pagination;
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
+
       <main className="flex-1">
         <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            All Articles
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Browse through our collection of insightful articles
-          </p>
+          <h1 className="text-4xl font-bold">All Articles</h1>
         </section>
+
         <ArticleList data={article} />
+
+        <div className="flex justify-center py-10">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href={page > 1 ? `?page=${page - 1}` : undefined}
+                />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink isActive>{page}</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext
+                  href={
+                    page < pagination.pageCount
+                      ? `?page=${page + 1}`
+                      : undefined
+                  }
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
       </main>
+
       <Footer />
     </div>
   );

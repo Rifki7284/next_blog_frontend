@@ -1,9 +1,8 @@
-import { ArticlesResponse } from "@/features/articles/types/articles-response";
-
 import { Article } from "@/features/articles/types/articles";
 import { ArticleCard } from "./article-card";
+import { ArticleListProps } from "@/features/articles/types/articles-response";
 
-const ArticleList = ({ data }: ArticlesResponse) => {
+const ArticleList = ({ data }: ArticleListProps) => {
   return (
     <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
       {data.length === 0 ? (

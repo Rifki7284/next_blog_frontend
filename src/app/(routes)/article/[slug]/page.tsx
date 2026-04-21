@@ -1,5 +1,3 @@
-import ArticleHeader from "@/components/molecules/article-header";
-import AuthorInfo from "@/components/molecules/author-info";
 import ArticleContent from "@/components/organisms/article-content";
 import { Footer } from "@/components/organisms/footer";
 import { Navbar } from "@/components/organisms/navbar";
@@ -59,7 +57,7 @@ export async function generateMetadata(
     },
   };
 }
-export const revalidate = 60;
+export const revalidate = 300;
 export async function generateStaticParams() {
   const posts: ArticlesResponse = await getArticles();
   return posts?.data.map((post) => ({
