@@ -16,11 +16,6 @@ export const MAIN_NAV_LINKS: NavigationLink[] = [
     href: "/about",
     description: "Learn about our blog",
   },
-  {
-    label: "Contact",
-    href: "/contact",
-    description: "Get in touch with us",
-  },
 ];
 
 export const FOOTER_LINKS = {

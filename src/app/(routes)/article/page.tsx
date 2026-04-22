@@ -79,42 +79,34 @@ export default async function Page({
   const pagination = posts.meta.pagination;
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
+    <main className="flex-1">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <h1 className="text-4xl font-bold">All Articles</h1>
+      </section>
 
-      <main className="flex-1">
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <h1 className="text-4xl font-bold">All Articles</h1>
-        </section>
+      <ArticleList data={article} />
 
-        <ArticleList data={article} />
-
-        <div className="flex justify-center py-10">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious
-                  href={page > 1 ? `?page=${page - 1}` : undefined}
-                />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink isActive>{page}</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext
-                  href={
-                    page < pagination.pageCount
-                      ? `?page=${page + 1}`
-                      : undefined
-                  }
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+      <div className="flex justify-center py-10">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                href={page > 1 ? `?page=${page - 1}` : undefined}
+              />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink isActive>{page}</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext
+                href={
+                  page < pagination.pageCount ? `?page=${page + 1}` : undefined
+                }
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+    </main>
   );
 }

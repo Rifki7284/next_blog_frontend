@@ -75,11 +75,5 @@ export default async function Page({
   const post: ArticlesResponse = await getArticleBySlug(slug);
   const article = post.data[0];
   const publishedDate = formatDate(article?.publishedAt);
-  return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
-      <ArticleContent article={article} publishedDate={publishedDate} />
-      <Footer />
-    </div>
-  );
+  return <ArticleContent article={article} publishedDate={publishedDate} />;
 }

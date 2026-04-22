@@ -1,7 +1,7 @@
 import { Media } from "./media";
 import { Category } from "./category";
 import { Seo } from "./seo";
-import { Block } from "./bloks";
+import { Block } from "./blocks";
 import { Meta } from "./articles-response";
 import { Author } from "./author";
 

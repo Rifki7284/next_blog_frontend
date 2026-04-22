@@ -1,4 +1,4 @@
-import { Block, RichTextBlock } from "../types/bloks";
+import { Block, RichTextBlock } from "../types/blocks";
 
 export function getRichTextBlock(blocks: Block[]): RichTextBlock | undefined {
   return blocks.find(

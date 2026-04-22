@@ -59,12 +59,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 const Page = () => {
-  return (
-    <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
-      <MainContent />
-      <Footer />
-    </div>
-  );
+  return <MainContent />;
 };
 export default Page;

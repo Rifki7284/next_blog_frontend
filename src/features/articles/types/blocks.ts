@@ -6,6 +6,13 @@ export interface RichTextBlock {
   __component: "shared.rich-text";
   body: string;
 }
+export interface CoreBlock {
+  id: number;
+  __component: "shared.core";
+  iconName: string;
+  title: string;
+  description: string;
+}
 
 export interface ImageBlock {
   __component: "shared.image";
