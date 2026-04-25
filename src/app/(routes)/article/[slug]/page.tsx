@@ -1,3 +1,4 @@
+import ArticleNotFound from "@/components/molecules/article-not-found";
 import ArticleContent from "@/components/organisms/article-content";
 import { Footer } from "@/components/organisms/footer";
 import { Navbar } from "@/components/organisms/navbar";
@@ -75,5 +76,7 @@ export default async function Page({
   const post: ArticlesResponse = await getArticleBySlug(slug);
   const article = post.data[0];
   const publishedDate = formatDate(article?.publishedAt);
+  if (!article) return <ArticleNotFound />;
+
   return <ArticleContent article={article} publishedDate={publishedDate} />;
 }

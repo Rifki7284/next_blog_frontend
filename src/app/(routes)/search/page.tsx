@@ -1,7 +1,5 @@
 import SearchInput from "@/components/molecules/search-input";
 import ArticleList from "@/components/organisms/article-list";
-import { Footer } from "@/components/organisms/footer";
-import { Navbar } from "@/components/organisms/navbar";
 import {
   Pagination,
   PaginationContent,
@@ -12,69 +10,17 @@ import {
 } from "@/components/ui/pagination";
 import { getArticles } from "@/features/articles/services/blogServices";
 import { ArticlesResponse } from "@/features/articles/types/articles-response";
-import { Metadata } from "next";
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
-export async function generateMetadata(): Promise<Metadata> {
-  const url = `${APP_URL}article`;
-
-  const title = "Artikel Terbaru & Insight Teknologi | My Blog";
-  const description =
-    "Kumpulan artikel terbaru seputar web development, teknologi, programming, dan berbagai insight menarik lainnya.";
-
-  const keywords = [
-    "blog teknologi",
-    "artikel programming",
-    "web development",
-    "tutorial coding",
-    "javascript",
-    "next js",
-    "laravel",
-    "tips developer",
-  ];
-
-  const image = `${APP_URL}/images/og-default.jpg`;
-
-  return {
-    title,
-    description,
-    keywords,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      type: "website",
-      url,
-      title,
-      description,
-      siteName: "My Blog",
-      images: [
-        {
-          url: image,
-          width: 1200,
-          height: 630,
-          alt: "Artikel Terbaru My Blog",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-    },
-  };
-}
-export const revalidate = 300;
 
 export default async function Page({
   searchParams,
 }: {
-  searchParams?: { page?: string };
+  searchParams?: { page?: string; q?: "" };
 }) {
   const params = await searchParams;
+  const query = params?.q || "";
   const page = Number(params?.page || 1);
 
-  const posts: ArticlesResponse = await getArticles(page);
+  const posts: ArticlesResponse = await getArticles(page, query);
   const article = posts.data;
 
   const pagination = posts.meta.pagination;
@@ -85,7 +31,6 @@ export default async function Page({
         <h1 className="text-4xl font-bold">All Articles</h1>
       </section>
       <ArticleList data={article} />
-
       <div className="flex justify-center py-10">
         <Pagination>
           <PaginationContent>

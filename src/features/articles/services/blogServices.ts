@@ -1,8 +1,13 @@
 import { fetchAPI } from "@/lib/api";
 import { ArticlesResponse } from "../types/articles-response";
-export async function getArticles(page = 1): Promise<ArticlesResponse> {
+export async function getArticles(
+  page = 1,
+  query?: "",
+): Promise<ArticlesResponse> {
+  const searchQuery = query ? `&filters[title][$containsi]=${query}` : "";
+
   return fetchAPI(
-    `articles?populate=*&pagination[page]=${page}&pagination[pageSize]=6`,
+    `articles?populate=*&pagination[page]=${page}&pagination[pageSize]=6${searchQuery}`,
   );
 }
 export async function getArticleBySlug(

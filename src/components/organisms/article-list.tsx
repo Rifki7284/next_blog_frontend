@@ -1,14 +1,17 @@
 import { Article } from "@/features/articles/types/articles";
 import { ArticleCard } from "./article-card";
 import { ArticleListProps } from "@/features/articles/types/articles-response";
+import SearchInput from "../molecules/search-input";
+import SearchNotFound from "./search-not-found";
 
 const ArticleList = ({ data }: ArticleListProps) => {
   return (
     <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+      <div className="my-5 flex justify-start">
+        <SearchInput />
+      </div>
       {data.length === 0 ? (
-        <div className="text-center py-16 bg-secondary/50 rounded-xl">
-          <p className="text-muted-foreground text-lg">No articles yet.</p>
-        </div>
+        <SearchNotFound />
       ) : (
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
